@@ -4,12 +4,16 @@ import com.sps.springbootproductservice.dto.GenericProductDto;
 import com.sps.springbootproductservice.exceptions.NotFoundException;
 import com.sps.springbootproductservice.thirdpartyclients.FakeStoreProductDto;
 import com.sps.springbootproductservice.thirdpartyclients.FakeStoreProductServiceClient;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Qualifier("fakeStoreProductService")
+@Primary
 public class FakeStoreProductService implements ProductService {
     private FakeStoreProductServiceClient fakeStoreProductClient;
 
