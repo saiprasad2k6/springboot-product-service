@@ -1,6 +1,7 @@
 package com.sps.springbootproductservice.controller;
 
 import com.sps.springbootproductservice.dto.GenericProductDto;
+import com.sps.springbootproductservice.exceptions.NotFoundException;
 import com.sps.springbootproductservice.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class ProductServiceController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<GenericProductDto> getProductById(@PathVariable("id") String id) throws Exception {
+    public ResponseEntity<GenericProductDto> getProductById(@PathVariable("id") String id) throws NotFoundException {
         GenericProductDto genericProductDto = productService.getProductById(id);
         return new ResponseEntity<>(genericProductDto,HttpStatus.OK);
 

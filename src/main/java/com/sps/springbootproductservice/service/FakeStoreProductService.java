@@ -1,6 +1,7 @@
 package com.sps.springbootproductservice.service;
 
 import com.sps.springbootproductservice.dto.GenericProductDto;
+import com.sps.springbootproductservice.exceptions.NotFoundException;
 import com.sps.springbootproductservice.thirdpartyclients.FakeStoreProductDto;
 import com.sps.springbootproductservice.thirdpartyclients.FakeStoreProductServiceClient;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
-    public GenericProductDto getProductById(String id) throws Exception {
+    public GenericProductDto getProductById(String id) throws NotFoundException {
         return convertToGenericProductDto(fakeStoreProductClient.getProductById(id));
     }
 

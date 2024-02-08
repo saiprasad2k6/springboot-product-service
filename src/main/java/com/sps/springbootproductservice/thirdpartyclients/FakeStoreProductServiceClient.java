@@ -1,5 +1,6 @@
 package com.sps.springbootproductservice.thirdpartyclients;
 
+import com.sps.springbootproductservice.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +31,12 @@ public class FakeStoreProductServiceClient {
 
     }
 
-    public FakeStoreProductDto getProductById(String id) throws Exception {
+    public FakeStoreProductDto getProductById(String id) throws NotFoundException {
         ResponseEntity<FakeStoreProductDto> response = restTemplate.getForEntity(this.fakeStoreProductServiceEndpoint+"/{id}", FakeStoreProductDto.class, id);
         FakeStoreProductDto fakeStoreProductDto = response.getBody();
 
         if (null == fakeStoreProductDto) {
-            throw new Exception("Product with id" + id + "not found");
+            throw new NotFoundException("Product with id" + id + "not found");
         }
 
         return fakeStoreProductDto;
