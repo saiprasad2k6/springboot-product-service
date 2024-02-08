@@ -29,4 +29,15 @@ public class FakeStoreProductServiceClient {
         return Arrays.stream(Objects.requireNonNull(response.getBody())).toList();
 
     }
+
+    public FakeStoreProductDto getProductById(String id) throws Exception {
+        ResponseEntity<FakeStoreProductDto> response = restTemplate.getForEntity(this.fakeStoreProductServiceEndpoint+"/{id}", FakeStoreProductDto.class, id);
+        FakeStoreProductDto fakeStoreProductDto = response.getBody();
+
+        if (null == fakeStoreProductDto) {
+            throw new Exception("Product with id" + id + "not found");
+        }
+
+        return fakeStoreProductDto;
+    }
 }
