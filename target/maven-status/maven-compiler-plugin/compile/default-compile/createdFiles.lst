@@ -1,0 +1,8 @@
+com/sps/springbootproductservice/thirdpartyclients/FakeStoreProductServiceClient.class
+com/sps/springbootproductservice/SpringbootProductServiceApplication.class
+com/sps/springbootproductservice/dto/GenericProductDto.class
+com/sps/springbootproductservice/service/ProductService.class
+com/sps/springbootproductservice/thirdpartyclients/FakeStoreProductDto.class
+com/sps/springbootproductservice/service/FakeStoreProductService.class
+com/sps/springbootproductservice/controller/ProductServiceController.class
+com/sps/springbootproductservice/config/RestTemplateConfig.class
