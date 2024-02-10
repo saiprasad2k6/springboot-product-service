@@ -1,2 +1,3 @@
 /mvnw.cmd
 /mvnw
+./docker-compose/.env
