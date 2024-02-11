@@ -1,18 +1,18 @@
-package com.sps.springbootproductservice.demo.tableperclass;
+package com.sps.springbootproductservice.demo.joinedtable;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity(name = "jt_user")
 @Getter
 @Setter
-@Entity(name = "tbc_user")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @ToString
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;

@@ -1,4 +1,4 @@
-package com.sps.springbootproductservice.demo.tableperclass;
+package com.sps.springbootproductservice.demo.joinedtable;
 
 import com.sps.springbootproductservice.demo.InheritanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +9,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Qualifier(value = "tbc_inheritance")
-@Profile("tbc_inheritance")
-public class TBCInheritanceServiceImpl implements InheritanceService {
-    @Autowired
-    private UserRepository userRepository;
+@Qualifier(value = "jt_inheritance")
+@Profile("jt_inheritance")
+public class JTInheritanceServiceImpl implements InheritanceService {
     @Autowired
     private MentorRepository mentorRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public void saveEntities() {
-        System.out.println("Saving in Table Per Class Service");
+        System.out.println("Saving in Joined Tables Service");
         Mentor mentor = new Mentor();
         mentor.setName("Sai");
         mentor.setEmail("saiprasad@gmail.com");
@@ -35,5 +36,4 @@ public class TBCInheritanceServiceImpl implements InheritanceService {
         userList.forEach(System.out::println);
 
     }
-
 }
