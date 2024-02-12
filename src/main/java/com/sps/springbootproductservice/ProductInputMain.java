@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class ProductInputMain implements CommandLineRunner {
     @Autowired
@@ -27,6 +29,13 @@ public class ProductInputMain implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         insertModels();
+        getProducts();
+    }
+
+    private void getProducts() {
+        List<Product> productList = productRepository.findAll();
+        System.out.println("Printing Products from database");
+        productList.forEach(product -> System.out.println(product.getTitle()));
     }
 
     private void insertModels() {
