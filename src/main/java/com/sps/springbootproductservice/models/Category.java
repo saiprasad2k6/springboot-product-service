@@ -2,11 +2,9 @@ package com.sps.springbootproductservice.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -21,7 +19,7 @@ import java.util.List;
 public class Category extends BaseModel {
     @Column
     private String name;
-    @OneToMany(mappedBy = "category")
-    @Fetch(FetchMode.SELECT)
-    private List<Product> products = new ArrayList<>();
+    //@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    private List<Product> products;
 }

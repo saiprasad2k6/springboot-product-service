@@ -6,6 +6,7 @@ import com.sps.springbootproductservice.models.Product;
 import com.sps.springbootproductservice.repositories.CategoryRepository;
 import com.sps.springbootproductservice.repositories.PriceRepository;
 import com.sps.springbootproductservice.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,11 +27,28 @@ public class ProductInputMain implements CommandLineRunner {
         SpringApplication.run(ProductInputMain.class, args);
     }
 
+    //@Transactional
     @Override
     public void run(String... args) throws Exception {
         insertModels();
         getProductsWithJPABuiltQuery();
         getProductWithJPACustomQuery();
+        getCategories();
+    }
+
+    private void getCategories() {
+        System.out.println();
+        System.out.println("********************* Printing Category *********************");
+        Category category = categoryRepository.findAll().get(0);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(category.getProducts().size());
+        category.getProducts().forEach(
+                product1 -> System.out.println(product1.getTitle())
+        );
     }
 
 
