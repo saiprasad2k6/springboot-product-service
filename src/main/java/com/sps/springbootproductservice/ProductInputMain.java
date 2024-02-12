@@ -30,6 +30,11 @@ public class ProductInputMain implements CommandLineRunner {
     public void run(String... args) throws Exception {
         insertModels();
         getProducts();
+        deleteProduct();
+    }
+
+    private void deleteProduct() {
+        //productRepository.deleteById("");
     }
 
     private void getProducts() {
@@ -41,7 +46,7 @@ public class ProductInputMain implements CommandLineRunner {
     private void insertModels() {
         Price price = new Price();
         price.setPrice(1.00);
-        priceRepository.save(price);
+        //priceRepository.save(price); Commented since cascade is enabled
 
         Category category = new Category();
         category.setName("Apple Devices");
@@ -51,7 +56,7 @@ public class ProductInputMain implements CommandLineRunner {
         product.setTitle("iPhone 15 Pro");
         product.setDescription("The best iPhone Ever");
         product.setCategory(category);
-        product.setPrice(price.getPrice());
+        product.setPrice(price);
         productRepository.save(product);
 
     }

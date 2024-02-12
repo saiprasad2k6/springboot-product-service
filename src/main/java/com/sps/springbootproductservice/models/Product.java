@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 @Entity(name = "product")
 @Table(schema = "product_service")
@@ -16,7 +17,9 @@ public class Product extends BaseModel {
     private String title;
     private String description;
     private String image;
-    private double price;
+    @OneToOne(cascade =  {CascadeType.PERSIST}) // Save pric before saving product
+    @JoinColumn(name = "price_id")
+    private Price price;
     @ManyToOne()
     @JoinColumn(name = "category")
     private Category category; // product -> category 1:1 M:1 ==> M:1
