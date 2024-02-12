@@ -17,7 +17,7 @@ public class Product extends BaseModel {
     private String description;
     private String image;
     private double price;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne()
     @JoinColumn(name = "category")
     private Category category; // product -> category 1:1 M:1 ==> M:1
 

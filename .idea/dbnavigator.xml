@@ -29,12 +29,18 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="9b724f6f-7fa8-4986-b43a-45ec16ca94fe" />
   </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/database/db-setup.sql" connection-id="9b724f6f-7fa8-4986-b43a-45ec16ca94fe" session-id="MAIN" current-schema="product_service" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ParserDiagnosticsManager">
+    <diagnostics-history />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
