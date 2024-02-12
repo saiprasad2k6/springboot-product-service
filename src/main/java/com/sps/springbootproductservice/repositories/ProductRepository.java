@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    Product findByTitleEqualsAndPrice_Price(String title, double price);
+    List<Product> findByTitleEqualsAndPrice_Price(String title, double price);
 
     List<Product> findAllByPrice_Currency(String currency);
 

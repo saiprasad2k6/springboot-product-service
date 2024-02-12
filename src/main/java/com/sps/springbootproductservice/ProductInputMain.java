@@ -66,8 +66,8 @@ public class ProductInputMain implements CommandLineRunner {
     private void getProductWithJPACustomQuery() {
         System.out.println();
         System.out.println("********************* Product title from Query *********************");
-        Product product = productRepository.findByTitleEqualsAndPrice_Price("iPhone 15 Pro", 1.00);
-        System.out.println(product);
+        List<Product> products = productRepository.findByTitleEqualsAndPrice_Price("iPhone 15 Pro", 1.00);
+        products.forEach(System.out::println);
 
         System.out.println();
         System.out.println("********************* Printing Products based on Currency *********************");
