@@ -17,13 +17,17 @@ public class SingleTableInheritanceServiceImpl implements InheritanceService {
 
     @Override
     public void saveEntities(){
-        System.out.println("Saving in Single Table Service");
+        System.out.println();
+        System.out.println("********************* Saving Mentor in Single Table *********************");
+
         Mentor mentor = new Mentor();
         mentor.setName("Sai");
         mentor.setEmail("saiprasad@gmail.com");
         mentor.setAverageRating(4.65);
         mentorRepository.save(mentor);
 
+        System.out.println();
+        System.out.println("********************* Saving User in Single Table *********************");
         User user = new User();
         user.setName("Sushanth");
         user.setEmail("sushsanth@gmail.com");

@@ -40,11 +40,13 @@ public class ProductInputMain implements CommandLineRunner {
         price.setCurrency("Rupees");
         //priceRepository.save(price); Commented since cascade is enabled
 
+        System.out.println();
         System.out.println("********************* Saving Category *********************");
         Category category = new Category();
         category.setName("Apple Devices");
         categoryRepository.save(category);
 
+        System.out.println();
         System.out.println("********************* Saving Product with Price Cascade *********************");
         Product product = new Product();
         product.setTitle("iPhone 15 Pro");
@@ -55,24 +57,29 @@ public class ProductInputMain implements CommandLineRunner {
     }
 
     private void getProductsWithJPABuiltQuery() {
+        System.out.println();
         System.out.println("********************* Get Products with JPA Built Query *********************");
         List<Product> productList = productRepository.findAll();
         productList.forEach(product -> System.out.println(product.getTitle()));
     }
 
     private void getProductWithJPACustomQuery() {
+        System.out.println();
         System.out.println("********************* Product title from Query *********************");
         Product product = productRepository.findByTitleEqualsAndPrice_Price("iPhone 15 Pro", 1.00);
         System.out.println(product);
 
+        System.out.println();
         System.out.println("********************* Printing Products based on Currency *********************");
         List<Product> productList = productRepository.findAllByPrice_Currency("Rupees");
         productList.forEach(System.out::println);
 
+        System.out.println();
         System.out.println("********************* Count Products by Price *********************");
         int count = productRepository.countAllByPrice_Price(1.00);
         System.out.println(count + " Number of Products are there for price 1.00");
 
+        System.out.println();
         System.out.println("********************* Get Products using native Query *********************");
         List<Product> productsWithQuery = productRepository.findByTitleWithNativeQuery("iPhone 15 Pro");
         productsWithQuery.forEach(System.out::println);

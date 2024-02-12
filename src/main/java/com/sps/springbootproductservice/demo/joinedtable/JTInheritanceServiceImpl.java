@@ -20,18 +20,23 @@ public class JTInheritanceServiceImpl implements InheritanceService {
 
     @Override
     public void saveEntities() {
-        System.out.println("Saving in Joined Tables Service");
+        System.out.println();
+        System.out.println("********************* Saving Mentor in Joined Tables *********************");
         Mentor mentor = new Mentor();
         mentor.setName("Sai");
         mentor.setEmail("saiprasad@gmail.com");
         mentor.setAverageRating(4.65);
         mentorRepository.save(mentor);
 
+        System.out.println();
+        System.out.println("********************* Saving User in Joined Tables *********************");
         User user = new User();
         user.setName("Sushanth");
         user.setEmail("sushsanth@gmail.com");
         userRepository.save(user);
 
+        System.out.println();
+        System.out.println("********************* Find Users in Joined Tables *********************");
         List<User> userList = userRepository.findAll();
         userList.forEach(System.out::println);
 

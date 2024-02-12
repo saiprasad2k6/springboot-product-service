@@ -19,13 +19,16 @@ public class TBCInheritanceServiceImpl implements InheritanceService {
 
     @Override
     public void saveEntities() {
-        System.out.println("Saving in Table Per Class Service");
+        System.out.println();
+        System.out.println("********************* Saving Mentor in Table Per Class *********************");
         Mentor mentor = new Mentor();
         mentor.setName("Sai");
         mentor.setEmail("saiprasad@gmail.com");
         mentor.setAverageRating(4.65);
         mentorRepository.save(mentor);
 
+        System.out.println();
+        System.out.println("********************* Saving User in Table Per Class *********************");
         User user = new User();
         user.setName("Sushanth");
         user.setEmail("sushsanth@gmail.com");
