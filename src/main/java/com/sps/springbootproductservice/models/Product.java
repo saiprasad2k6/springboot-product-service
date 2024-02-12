@@ -1,10 +1,7 @@
 package com.sps.springbootproductservice.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 @Entity(name = "product")
@@ -13,6 +10,7 @@ import org.hibernate.annotations.Cascade;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Product extends BaseModel {
     private String title;
     private String description;

@@ -29,35 +29,53 @@ public class ProductInputMain implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         insertModels();
-        getProducts();
-        deleteProduct();
+        getProductsWithJPABuiltQuery();
+        getProductWithJPACustomQuery();
     }
 
-    private void deleteProduct() {
-        //productRepository.deleteById("");
-    }
-
-    private void getProducts() {
-        List<Product> productList = productRepository.findAll();
-        System.out.println("Printing Products from database");
-        productList.forEach(product -> System.out.println(product.getTitle()));
-    }
 
     private void insertModels() {
         Price price = new Price();
         price.setPrice(1.00);
+        price.setCurrency("Rupees");
         //priceRepository.save(price); Commented since cascade is enabled
 
+        System.out.println("********************* Saving Category *********************");
         Category category = new Category();
         category.setName("Apple Devices");
         categoryRepository.save(category);
 
+        System.out.println("********************* Saving Product with Price Cascade *********************");
         Product product = new Product();
         product.setTitle("iPhone 15 Pro");
         product.setDescription("The best iPhone Ever");
         product.setCategory(category);
         product.setPrice(price);
         productRepository.save(product);
+    }
+
+    private void getProductsWithJPABuiltQuery() {
+        System.out.println("********************* Get Products with JPA Built Query *********************");
+        List<Product> productList = productRepository.findAll();
+        productList.forEach(product -> System.out.println(product.getTitle()));
+    }
+
+    private void getProductWithJPACustomQuery() {
+        System.out.println("********************* Product title from Query *********************");
+        Product product = productRepository.findByTitleEqualsAndPrice_Price("iPhone 15 Pro", 1.00);
+        System.out.println(product);
+
+        System.out.println("********************* Printing Products based on Currency *********************");
+        List<Product> productList = productRepository.findAllByPrice_Currency("Rupees");
+        productList.forEach(System.out::println);
+
+        System.out.println("********************* Count Products by Price *********************");
+        int count = productRepository.countAllByPrice_Price(1.00);
+        System.out.println(count + " Number of Products are there for price 1.00");
+
+        System.out.println("********************* Get Products using native Query *********************");
+        List<Product> productsWithQuery = productRepository.findByTitleWithNativeQuery("iPhone 15 Pro");
+        productsWithQuery.forEach(System.out::println);
 
     }
 }
