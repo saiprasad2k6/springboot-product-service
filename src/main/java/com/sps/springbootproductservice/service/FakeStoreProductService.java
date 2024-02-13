@@ -33,6 +33,7 @@ public class FakeStoreProductService implements ProductService {
 
     @Override
     public GenericProductDto getProductById(String id) throws NotFoundException {
+        System.out.println("In Product Service getProductById");
         return convertToGenericProductDto(fakeStoreProductClient.getProductById(id));
     }
 

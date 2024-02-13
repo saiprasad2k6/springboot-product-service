@@ -31,7 +31,10 @@ public class ProductServiceController {
     @GetMapping("{id}")
     public ResponseEntity<GenericProductDto> getProductById(@PathVariable("id") String id) throws NotFoundException {
         GenericProductDto genericProductDto = productService.getProductById(id);
-        return new ResponseEntity<>(genericProductDto,HttpStatus.OK);
+        if (genericProductDto == null)
+            throw new NotFoundException("Product Not Found");
+
+        return new ResponseEntity<>(genericProductDto, HttpStatus.OK);
 
     }
 }
