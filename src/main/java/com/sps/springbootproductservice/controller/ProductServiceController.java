@@ -25,6 +25,8 @@ public class ProductServiceController {
     @GetMapping
     public ResponseEntity<List<GenericProductDto>> getProductList() {
         List<GenericProductDto> productDtoList = productService.getProductList();
+        if(productDtoList.isEmpty())
+            return new ResponseEntity<>(productDtoList, HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(productDtoList, HttpStatus.OK);
     }
 
