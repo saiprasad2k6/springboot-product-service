@@ -4,3 +4,4 @@
 /docker-compose/.env
 /.idea/
 /.run/
+/target/
