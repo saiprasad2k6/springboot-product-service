@@ -20,4 +20,9 @@ public class SelfProductService implements ProductService{
     public GenericProductDto getProductById(String id) throws NotFoundException {
         return null;
     }
+
+    @Override
+    public GenericProductDto createProduct(GenericProductDto productDto) {
+        return null;
+    }
 }

@@ -6,10 +6,7 @@ import com.sps.springbootproductservice.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +22,7 @@ public class ProductServiceController {
     @GetMapping
     public ResponseEntity<List<GenericProductDto>> getProductList() {
         List<GenericProductDto> productDtoList = productService.getProductList();
-        if(productDtoList.isEmpty())
+        if (productDtoList.isEmpty())
             return new ResponseEntity<>(productDtoList, HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(productDtoList, HttpStatus.OK);
     }
@@ -37,6 +34,17 @@ public class ProductServiceController {
             throw new NotFoundException("Product Not Found");
 
         return new ResponseEntity<>(genericProductDto, HttpStatus.OK);
+
+    }
+
+    @PostMapping()
+    public ResponseEntity<GenericProductDto> createProduct(@RequestBody GenericProductDto product) throws Exception {
+        GenericProductDto genericProductDto = productService.createProduct(product);
+        if (genericProductDto == null) {
+            throw new Exception("Product not saved");
+        }
+        return new ResponseEntity<>(genericProductDto, HttpStatus.OK);
+
 
     }
 }

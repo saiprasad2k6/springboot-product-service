@@ -8,4 +8,6 @@ import java.util.List;
 public interface ProductService {
     public List<GenericProductDto> getProductList();
     public GenericProductDto getProductById(String id) throws NotFoundException;
+
+    public GenericProductDto createProduct(GenericProductDto productDto);
 }
