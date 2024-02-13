@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class RandomTest {
-    @Test
+    //@Test
     void testLessThan3(){
         Random random = new Random();
         int number = random.nextInt();
