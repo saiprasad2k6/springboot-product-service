@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class ProductInputMain implements CommandLineRunner {
     @Autowired
     private PriceRepository priceRepository;
