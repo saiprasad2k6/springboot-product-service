@@ -18,8 +18,8 @@ public class Product extends BaseModel {
     @OneToOne(cascade =  {CascadeType.PERSIST}) // Save pric before saving product
     @JoinColumn(name = "price_id")
     private Price price;
-    @ManyToOne()
-    @JoinColumn(name = "category")
+    @ManyToOne(cascade =  {CascadeType.PERSIST})
+    @JoinColumn(name = "category_id")
     private Category category; // product -> category 1:1 M:1 ==> M:1
 
 }
