@@ -27,7 +27,7 @@ public class ProductInputMain implements CommandLineRunner {
         SpringApplication.run(ProductInputMain.class, args);
     }
 
-    //@Transactional
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
         insertModels();
